@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Music.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ui/music-off.png" type="Texture" id=2]
+[ext_resource path="res://Assets/ui/music-on.png" type="Texture" id=3]
+[ext_resource path="res://Sound/Project.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sound/Project2.ogg" type="AudioStream" id=5]
+
+[node name="MusicButton" type="TextureButton"]
+margin_left = 476.892
+margin_top = 44.6388
+margin_right = 500.892
+margin_bottom = 68.6388
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Node2D" parent="."]
+position = Vector2( -476.892, -44.6388 )
+script = ExtResource( 1 )
+
+[node name="Sound1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 4 )
+
+[node name="Sound2" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 5 )
+[connection signal="toggled" from="." to="Music" method="_on_MusicButton_toggled"]
+[connection signal="status" from="Music" to="Music" method="_on_Music_status"]
+[connection signal="finished" from="Music/Sound1" to="Music" method="_on_Sound1_finished"]
+[connection signal="finished" from="Music/Sound2" to="Music" method="_on_Sound2_finished"]

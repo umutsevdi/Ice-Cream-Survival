@@ -1,0 +1,382 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Assets/ice_cream_board.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/IceCreamBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/UI.gd" type="Script" id=4]
+[ext_resource path="res://Objects/icecream_drop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/ui/hp_out.png" type="Texture" id=6]
+[ext_resource path="res://Assets/ui/hp_in.png" type="Texture" id=7]
+[ext_resource path="res://MatchupPro.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Assets/ui/timer.png" type="Texture" id=9]
+[ext_resource path="res://Assets/ui/box_hp.png" type="Texture" id=10]
+[ext_resource path="res://Assets/ui/menu_button.png" type="Texture" id=11]
+[ext_resource path="res://Assets/ui/menu_button_pressed.png" type="Texture" id=12]
+[ext_resource path="res://Assets/guy_idle.png" type="Texture" id=13]
+
+[sub_resource type="SegmentShape2D" id=1]
+b = Vector2( -150.609, 89.8592 )
+
+[sub_resource type="SegmentShape2D" id=2]
+b = Vector2( 148.592, 90.2816 )
+
+[sub_resource type="SegmentShape2D" id=3]
+b = Vector2( -209.935, 1.76939 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0588235, 0.352941, 0.388235, 0.533333 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.486275, 0.701961, 0.729412, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.486275, 0.701961, 0.729412, 1 )
+expand_margin_left = 56.0
+expand_margin_right = 55.0
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 8 )
+
+[node name="Game" type="YSort"]
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Border"]
+margin_top = 0.638771
+margin_right = 512.0
+margin_bottom = 299.639
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="Border"]
+position = Vector2( 0, 212 )
+
+[node name="GameField" type="Area2D" parent="Border"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border/GameField"]
+position = Vector2( 0, 7 )
+polygon = PoolVector2Array( 153.131, 185.903, 359.728, 185.977, 501.329, 273.294, 10.3021, 272.278 )
+
+[node name="Left" type="CollisionShape2D" parent="Border"]
+position = Vector2( 151.911, 193.145 )
+shape = SubResource( 1 )
+
+[node name="Right" type="CollisionShape2D" parent="Border"]
+position = Vector2( 360.973, 193.145 )
+shape = SubResource( 2 )
+
+[node name="Right2" type="CollisionShape2D" parent="Border"]
+position = Vector2( 360.973, 193.145 )
+shape = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 252.976, 200 )
+
+[node name="icecream_drop" parent="." instance=ExtResource( 5 )]
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="Box1" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 117.97, 253.343 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box1" index="0"]
+polygon = PoolVector2Array( -4.08796, -6.81831, 34.4464, -6.7455, 21.4111, 10.7098, -25.411, 10.5599 )
+
+[node name="Box2" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 203.976, 253.343 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box2" index="0"]
+polygon = PoolVector2Array( -16.9617, -6.05545, 34.695, -6.30745, 33.9391, 9.56755, -28.301, 9.31558 )
+
+[node name="AnimatedSprite" parent="Boxes/Box2" index="1"]
+animation = "box2"
+
+[node name="Box3" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 158.018, 219.747 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box3" index="0"]
+polygon = PoolVector2Array( -1.37537, -5.90199, 25.0289, -6.08578, 15.5245, 6.89664, -17.2146, 6.11882 )
+
+[node name="AnimatedSprite" parent="Boxes/Box3" index="1"]
+animation = "box3"
+
+[node name="Box4" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 218.049, 219.747 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box4" index="0"]
+polygon = PoolVector2Array( -7.89235, -4.5997, 22.8486, -5.61052, 22.373, 5.98424, -17.2146, 6.11882 )
+
+[node name="AnimatedSprite" parent="Boxes/Box4" index="1"]
+animation = "box4"
+
+[node name="Box5" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 391.983, 253.343 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box5" index="0"]
+polygon = PoolVector2Array( 4.088, -6.818, -34.446, -6.745, -21.411, 10.71, 25.411, 10.56 )
+
+[node name="AnimatedSprite" parent="Boxes/Box5" index="1"]
+flip_h = true
+
+[node name="Box6" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 305.929, 253.343 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box6" index="0"]
+polygon = PoolVector2Array( 16.962, -6.055, -34.695, -6.307, -33.939, 9.568, 28.301, 9.316 )
+
+[node name="AnimatedSprite" parent="Boxes/Box6" index="1"]
+animation = "box2"
+flip_h = true
+
+[node name="Box7" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 352.108, 219.747 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box7" index="0"]
+polygon = PoolVector2Array( 1.375, -5.902, -25.029, -6.086, -15.524, 6.897, 17.215, 6.119 )
+
+[node name="AnimatedSprite" parent="Boxes/Box7" index="1"]
+animation = "box3"
+flip_h = true
+
+[node name="Box8" parent="Boxes" instance=ExtResource( 3 )]
+position = Vector2( 292.102, 219.747 )
+
+[node name="CollisionPolygon2D" parent="Boxes/Box8" index="0"]
+polygon = PoolVector2Array( 7.892, -4.6, -22.849, -5.611, -22.373, 5.984, 17.215, 6.119 )
+
+[node name="AnimatedSprite" parent="Boxes/Box8" index="1"]
+animation = "box4"
+flip_h = true
+
+[node name="Guy" type="TextureRect" parent="."]
+margin_left = 172.97
+margin_top = 44.6388
+margin_right = 236.97
+margin_bottom = 108.639
+rect_scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 4 )
+
+[node name="TextureProgress" type="TextureProgress" parent="CanvasLayer"]
+margin_left = 33.8542
+margin_top = 0.464859
+margin_right = 180.854
+margin_bottom = 44.4649
+value = 100.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+tint_progress = Color( 0.913725, 0, 0, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+margin_right = 44.0
+margin_bottom = 44.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_left = 390.163
+margin_top = 0.638771
+margin_right = 510.163
+margin_bottom = 44.6388
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect"]
+margin_left = 60.0
+margin_top = 8.0
+margin_right = 97.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.486275, 0.701961, 0.729412, 1 )
+custom_colors/font_color_shadow = Color( 0.298039, 0.407843, 0.423529, 1 )
+text = "00.00"
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndGameScreen" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 0.996
+anchor_bottom = 0.999
+margin_right = 2.048
+margin_bottom = -0.700012
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/EndGameScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -101.5
+margin_right = 120.0
+margin_bottom = 77.5
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="CanvasLayer/EndGameScreen"]
+margin_left = 136.0
+margin_top = 182.0
+margin_right = 376.0
+margin_bottom = 227.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.482353, 0.976471, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.298039, 0.407843, 0.423529, 1 )
+text = "YOU SURVIVED AT NULL MODE
+FOR X SECONDS!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/EndGameScreen"]
+margin_left = 194.0
+margin_top = 72.0
+margin_right = 319.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 125, 26 )
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/EndGameScreen/Panel2"]
+margin_left = -58.0
+margin_right = 182.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.0588235, 0.352941, 0.388235, 1 )
+custom_colors/font_color_shadow = Color( 0.486275, 0.701961, 0.729412, 1 )
+text = "GAME OVER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndGameScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.0
+margin_top = -17.5
+margin_right = 63.0
+margin_bottom = 36.5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReplayButton" type="TextureButton" parent="CanvasLayer/EndGameScreen/VBoxContainer"]
+margin_right = 125.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 125, 25 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="CanvasLayer/EndGameScreen/VBoxContainer/ReplayButton"]
+margin_right = 125.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.486275, 0.701961, 0.729412, 1 )
+custom_colors/font_color_shadow = Color( 0.298039, 0.407843, 0.423529, 1 )
+text = "PLAY AGAIN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="TextureButton" parent="CanvasLayer/EndGameScreen/VBoxContainer"]
+margin_top = 29.0
+margin_right = 125.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 125, 25 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="CanvasLayer/EndGameScreen/VBoxContainer/MainMenu"]
+margin_right = 125.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.486275, 0.701961, 0.729412, 1 )
+custom_colors/font_color_shadow = Color( 0.298039, 0.407843, 0.423529, 1 )
+text = "MAIN MENU"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_exited" from="Border/GameField" to="Player" method="_on_GameField_body_exited"]
+[connection signal="body_entered" from="Boxes/Box1" to="Boxes/Box1" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box1" to="Boxes/Box1" method="_on_IceCreamBox_body_exited"]
+[connection signal="body_entered" from="Boxes/Box2" to="Boxes/Box2" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box2" to="Boxes/Box2" method="_on_IceCreamBox_body_exited"]
+[connection signal="body_entered" from="Boxes/Box3" to="Boxes/Box3" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box3" to="Boxes/Box3" method="_on_IceCreamBox_body_exited"]
+[connection signal="body_entered" from="Boxes/Box4" to="Boxes/Box4" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box4" to="Boxes/Box4" method="_on_IceCreamBox_body_exited"]
+[connection signal="body_entered" from="Boxes/Box5" to="Boxes/Box5" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box5" to="Boxes/Box5" method="_on_IceCreamBox_body_exited"]
+[connection signal="body_entered" from="Boxes/Box6" to="Boxes/Box6" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box6" to="Boxes/Box6" method="_on_IceCreamBox_body_exited"]
+[connection signal="body_entered" from="Boxes/Box7" to="Boxes/Box7" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box7" to="Boxes/Box7" method="_on_IceCreamBox_body_exited"]
+[connection signal="body_entered" from="Boxes/Box8" to="Boxes/Box8" method="_on_IceCreamBox_body_entered"]
+[connection signal="body_exited" from="Boxes/Box8" to="Boxes/Box8" method="_on_IceCreamBox_body_exited"]
+[connection signal="inside" from="CanvasLayer" to="CanvasLayer" method="_on_CanvasLayer_inside"]
+[connection signal="pressed" from="CanvasLayer/EndGameScreen/VBoxContainer/ReplayButton" to="CanvasLayer" method="_on_ReplayButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndGameScreen/VBoxContainer/MainMenu" to="CanvasLayer" method="_on_MainMenu_pressed"]
+
+[editable path="Boxes/Box1"]
+
+[editable path="Boxes/Box2"]
+
+[editable path="Boxes/Box3"]
+
+[editable path="Boxes/Box4"]
+
+[editable path="Boxes/Box5"]
+
+[editable path="Boxes/Box6"]
+
+[editable path="Boxes/Box7"]
+
+[editable path="Boxes/Box8"]

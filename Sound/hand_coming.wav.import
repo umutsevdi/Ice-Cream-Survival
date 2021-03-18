@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hand_coming.wav-9de8841ab83767bd660f98a32fc1c816.sample"
+
+[deps]
+
+source_file="res://Sound/hand_coming.wav"
+dest_files=[ "res://.import/hand_coming.wav-9de8841ab83767bd660f98a32fc1c816.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
