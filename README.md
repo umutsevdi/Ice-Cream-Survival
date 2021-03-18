@@ -15,7 +15,7 @@ And that's it. As time goes on Icecream starts to melt. To stop melting, you mus
 press the icecream platforms. But this only works when they are open. The longer you
 play, the faster game becomes! How long will you survive?
 
-Rating Page: https://itch.io/jam/mini-jam-66-sweets/rate/807411
+Submission Page: https://itch.io/jam/mini-jam-66-sweets/rate/807411
 
 Credits:
 
