@@ -1,6 +1,6 @@
 # Ice-Cream-Survival
 Source code of the game I published at itch.io for Mini Jam 66: Sweets
-You can play the game from : https://umuts.itch.io/icecream-survival
+You can play the game from : https://umutsevdi.itch.io/icecream-survival
 
 
 Ice Cream Survival
